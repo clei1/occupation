@@ -1,0 +1,24 @@
+<DOCTYPE! html>
+<html>
+  <head>
+    <title>{{title}} </title>
+  </head>
+
+  <body>
+    <h1 align="center">{{descriptive_heading}}</h1>
+    <table border="1" align="center">
+      {% for key in collection %}
+      <tr>
+	<td>
+	  {{key}}
+	</td>
+	<td align="center">
+	  {{collection[key]}}
+	</td>
+      </tr>
+    {% endfor %}
+    </table>
+    <h3 align="center">Randomly selected occupation: {{occupation}}</h3>
+  </body>
+  
+</html>
