@@ -10,10 +10,10 @@
       {% for key in collection %}
       <tr>
 	<td>
-	  {{key}}
+	  <a href={{collection[key][1]}}>{{key}}</a>
 	</td>
 	<td align="center">
-	  {{collection[key]}}
+	  {{collection[key][0]}}
 	</td>
       </tr>
     {% endfor %}
