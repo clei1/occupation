@@ -30,7 +30,7 @@ def occupationGenerator():
 
 @my_app.route('/occupations')
 def occupations():
-    return render_template('template.html', title="Occupations Generator", descriptive_heading="Occupations Generator", collection = dictionary(), l = len(dictionary()), occupation = occupationGenerator())
+    return render_template('template.html', title="Occupations Generator", descriptive_heading="Occupations Generator", collection = dictionary(), occupation = occupationGenerator())
 
 if __name__ == '__main__':
     my_app.debug = True;
