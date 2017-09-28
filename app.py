@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-import csv
-import random
+from utils import occupation
 
 my_app = Flask(__name__)
 
@@ -8,29 +7,9 @@ my_app = Flask(__name__)
 def root():
     return 'Hi everybody!'
 
-def dictionary():
-    dic = {}
-    with open('occupations.csv') as csvfile:
-        rows = csv.reader(csvfile, delimiter = "\n")
-        for row in rows:
-            tempRow = row[0].rsplit(',',2)
-            if(tempRow[1] != "Percentage"):
-                dic[tempRow[0]] = (float(tempRow[1]), tempRow[2])
-    return dic
-
-def occupationGenerator():
-    dic = dictionary()
-    randomNum = random.uniform(0, dic["Total"][0])
-    
-    for key in dic:
-        if(key != "Total"):
-            randomNum -= dic[key][0]
-            if(randomNum < 0):
-                return key
-
 @my_app.route('/occupations')
 def occupations():
-    return render_template('template.html', title="Occupations Generator", descriptive_heading="Occupations Generator", collection = dictionary(), occupation = occupationGenerator())
+    return render_template('template.html', title="Occupations Generator", descriptive_heading="Occupations Generator", collection = occupation.dictionary(), occupation = occupation.occupationGenerator())
 
 if __name__ == '__main__':
     my_app.debug = True;
